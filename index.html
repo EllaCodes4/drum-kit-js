@@ -2,12 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Ella's JavaScript Drum Kit</title>
+    <title>Ella's JavaScript Drum Set</title>
     <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
-    <h1>Ella's JavaScript Drum Kit</h1>
-
+    <h1>Digital Drums</h1>
+    <h4>Built with JavaScript</h4>
     <div class="keys">
       <div data-key="65" class="key">
         <kbd>A</kbd>
@@ -84,8 +84,14 @@
       src="sounds/01 - JavaScript Drum Kit_sounds_tink.wav"
     ></audio>
 
+    <footer>
+      Coded by:
+      <a href="https://ellacodes.netlify.app"
+        >Gabriella Corales ("EllaCodes")</a
+      >
+    </footer>
     <script>
-      window.addEventListener("keydown", function PlayDrumSound(event) {
+      function playDrumSound(event) {
         const audio = document.querySelector(
           `audio[data-key="${event.keyCode}"]`
         );
@@ -94,7 +100,7 @@
         audio.currentTime = 0;
         audio.play();
         key.classList.add(`playing`);
-      });
+      }
 
       function removeTransition(event) {
         if (event.propertyName !== `transform`) return;
@@ -105,6 +111,8 @@
       keys.forEach((key) =>
         key.addEventListener(`transitionend`, removeTransition)
       );
+
+      window.addEventListener("keydown", playDrumSound);
     </script>
   </body>
 </html>
